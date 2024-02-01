@@ -1,12 +1,11 @@
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
 public class Stage4 {
-    public static String readFile(String path) throws IOException {
-        return new String(Files.readAllBytes(Paths.get(path)));
+    public static String readFile(String fileName) throws IOException {
+        return new String(Files.readAllBytes(Paths.get(fileName)));
     }
     public static void print(){
         System.out.println("==Menu==");
@@ -16,11 +15,11 @@ public class Stage4 {
     }
     public static void main(String[] args) throws Exception{
         String fileName = args[1];
-        String txt = readFile(fileName);
-        ArrayList<String> arr = new ArrayList<>();
-        Scanner sc = new Scanner(txt);
+        String people = readFile(fileName);
+        ArrayList<String> list_of_person = new ArrayList<>();
+        Scanner sc = new Scanner(people);
         while(sc.hasNext()){
-            arr.add(sc.nextLine());
+            list_of_person.add(sc.nextLine());
         }
         Scanner scanner = new Scanner(System.in);
         boolean exit = false;
@@ -41,14 +40,14 @@ public class Stage4 {
                     break;
                 case 2:
                     System.out.println("=== List of people ===");
-                    arr.forEach(System.out::println);
+                    list_of_person.forEach(System.out::println);
                     break;
                 case 1 :
                     System.out.println("Enter a name or email to search all suitable people.");
-                    String word = scanner.nextLine();
-                    for(String w : arr){
-                        if(w.toLowerCase().contains(word.toLowerCase())){
-                            System.out.println(w);
+                    String toSearch = scanner.nextLine();
+                    for(String p : list_of_person){
+                        if(p.toLowerCase().contains(toSearch.toLowerCase())){
+                            System.out.println(p);
                         }
                     }
                     break;

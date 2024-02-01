@@ -17,18 +17,18 @@ public class Stage5 {
     public static void main(String[] args) throws Exception{
         String fileName = args[1];
         String txt = readFile(fileName);
-        ArrayList<String> arr = new ArrayList<>();
+        ArrayList<String> list_of_person = new ArrayList<>();
         Scanner sc = new Scanner(txt);
         while(sc.hasNext()){
-            arr.add(sc.nextLine());
+            list_of_person.add(sc.nextLine());
         }
         Map<String,ArrayList<Integer>> inverted_index
                 = new HashMap<>();
-        for(int i = 0; i < arr.size(); i++){
-            String[] values = arr.get(i).split(" ");
-            for(String val : values){
-                inverted_index.putIfAbsent(val, new ArrayList<>());
-                inverted_index.get(val).add(i);
+        for(int i = 0; i < list_of_person.size(); i++){
+            String[] person_details = list_of_person.get(i).split(" ");
+            for(String person_detail : person_details){
+                inverted_index.putIfAbsent(person_detail, new ArrayList<>());
+                inverted_index.get(person_detail).add(i);
             }
         }
         Scanner scanner = new Scanner(System.in);
@@ -50,15 +50,15 @@ public class Stage5 {
                     break;
                 case 2:
                     System.out.println("=== List of people ===");
-                    arr.forEach(System.out::println);
+                    list_of_person.forEach(System.out::println);
                     break;
                 case 1 :
                     System.out.println("Enter a name or email to search all suitable people.");
-                    String word = scanner.nextLine();
-                    if(inverted_index.get(word) != null){
-                        ArrayList<Integer> indices = inverted_index.get(word);
+                    String to_search = scanner.nextLine();
+                    if(inverted_index.get(to_search) != null){
+                        ArrayList<Integer> indices = inverted_index.get(to_search);
                         for(int index : indices){
-                            System.out.println(arr.get(index));
+                            System.out.println(list_of_person.get(index));
                         }
                     }
                     else{

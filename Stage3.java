@@ -10,11 +10,11 @@ public class Stage3 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter the number of people:");
-        int n = Integer.parseInt(scanner.nextLine());
-        ArrayList<String> arr = new ArrayList<>();
+        int noOfPerson = Integer.parseInt(scanner.nextLine());
+        ArrayList<String> list_of_person = new ArrayList<>();
         System.out.println("Enter all people:");
-        while(n-- > 0){
-            arr.add(scanner.nextLine());
+        while(noOfPerson -- > 0){
+            list_of_person.add(scanner.nextLine());
         }
         boolean exit = false;
         while(!exit){
@@ -34,13 +34,13 @@ public class Stage3 {
                     break;
                 case 2:
                     System.out.println("=== List of people ===");
-                    arr.forEach(System.out::println);
+                    list_of_person.forEach(System.out::println);
                     break;
                 case 1 :
                     System.out.println("Enter a name or email to search all suitable people.");
-                    String word = scanner.nextLine();
-                    for(String w : arr){
-                        if(w.toLowerCase().contains(word.toLowerCase())){
+                    String toSearch = scanner.nextLine();
+                    for(String w : list_of_person){
+                        if(w.toLowerCase().contains(toSearch.toLowerCase())){
                             System.out.println(w);
                         }
                     }
