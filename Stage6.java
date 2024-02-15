@@ -187,17 +187,11 @@ public class Stage6 {
                     String strategy = scanner.nextLine();
                     System.out.println("Enter a name or email to search all suitable people.");
                     String toSearch = scanner.nextLine();
-                    Strategy strat = null;
-                    if (strategy.equals("ALL")) {
-                        strat = ConcreteImplementation::findAll;
-                    }
-                    else if (strategy.equals("ANY")) {
-                        strat = ConcreteImplementation::findAny;
-                    }
-                    else {
-                        strat = ConcreteImplementation::findNone;
-                    }
-
+                    Strategy strat = switch (strategy) {
+                        case "ALL" -> ConcreteImplementation::findAll;
+                        case "ANY" -> ConcreteImplementation::findAny;
+                        default -> ConcreteImplementation::findNone;
+                    };
                     strat.find(toSearch,invertedIndex,listOfPerson).forEach(System.out::println);
                     break;
 
