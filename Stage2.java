@@ -18,7 +18,7 @@ public class Stage2 {
             final String toSearch, final ArrayList<String> listOfPerson) {
         List<String> matchingLines = new ArrayList<>();
         for (String person : listOfPerson) {
-            if (person.contains(toSearch)) {
+            if (person.toLowerCase().contains(toSearch)) {
                 matchingLines.add(person);
             }
         }
