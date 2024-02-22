@@ -1,3 +1,5 @@
+import helper.Help;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -49,22 +51,13 @@ public class Stage5 {
         boolean exit = false;
         while (!exit) {
             print();
-            int choice = -1;
-            try {
-                choice = Integer.parseInt(scanner.nextLine());
-            }
-            catch (Exception e) {
-                System.out.println("Incorrect option! Try again.");
-                continue;
-            }
+            int choice = Help.getChoice(scanner);
             switch (choice) {
                 case 0 :
-                    System.out.println("Bye!");
-                    exit = true;
+                    exit = Help.choice0();
                     break;
                 case 2 :
-                    System.out.println("=== List of people ===");
-                    listOfPerson.forEach(System.out::println);
+                    Help.choice2(listOfPerson);
                     break;
                 case 1 :
                     System.out.println("Enter a name or email to search all suitable people.");
@@ -74,8 +67,7 @@ public class Stage5 {
                         for (int index : indices) {
                             System.out.println(listOfPerson.get(index));
                         }
-                    }
-                    else {
+                    } else {
                         System.out.println("No matching people found.");
                     }
                     break;
