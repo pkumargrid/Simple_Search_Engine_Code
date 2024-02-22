@@ -17,8 +17,7 @@ public class Help {
         int choice = -1;
         try {
             choice = Integer.parseInt(scanner.nextLine());
-        } catch (Exception e) {
-            System.out.println("Incorrect option! Try again.");
+        } catch (Exception ignored) {
         }
         return choice;
     }
