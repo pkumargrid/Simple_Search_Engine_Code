@@ -62,8 +62,8 @@ public class Stage5 {
                 case 1 :
                     System.out.println("Enter a name or email to search all suitable people.");
                     String toSearch = scanner.nextLine();
-                    if (invertedIndex.get(toSearch) != null) {
-                        ArrayList<Integer> indices = invertedIndex.get(toSearch);
+                    if (invertedIndex.get(toSearch.toLowerCase()) != null) {
+                        ArrayList<Integer> indices = invertedIndex.get(toSearch.toLowerCase());
                         for (int index : indices) {
                             System.out.println(listOfPerson.get(index));
                         }
