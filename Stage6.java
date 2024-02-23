@@ -172,20 +172,17 @@ public class Stage6 {
                     Help.choice2(listOfPerson);
                     break;
                 case 1 :
-                    System.out.println("Select a matching strategy: ALL, ANY, NONE");
+		    System.out.println("Select a matching strategy: ALL, ANY, NONE");
                     String strategy = scanner.nextLine();
                     System.out.println("Enter a name or email to search all suitable people.");
                     String toSearch = scanner.nextLine();
-                    Strategy strat = null;
-                    if (strategy.equals("ALL")) {
-                        strat = ConcreteImplementation::findAll;
-                    } else if (strategy.equals("ANY")) {
-                        strat = ConcreteImplementation::findAny;
-
-                    } else {
-                        strat = ConcreteImplementation::findNone;
-                    }
-                    strat.find(toSearch, invertedIndex, listOfPerson).forEach(System.out::println);
+                    Strategy strategyImplementation = switch (strategy) {
+                        case "ALL" -> ConcreteImplementation::findAll;
+                        case "ANY" -> ConcreteImplementation::findAny;
+                        case "NONE" -> ConcreteImplementation::findNone;
+                        default -> throw new IllegalStateException("Unexpected value: " + strategy);
+                    };
+                    strategyImplementation.find(toSearch, invertedIndex, listOfPerson).forEach(System.out::println);
                     break;
                 default :
                     System.out.println("Incorrect option! Try again.");
