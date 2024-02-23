@@ -43,8 +43,8 @@ public class Stage5 {
         for (int i = 0; i < listOfPerson.size(); i++) {
             String[] personDetails = listOfPerson.get(i).split(" ");
             for (String personDetail : personDetails) {
-                invertedIndex.putIfAbsent(personDetail, new ArrayList<>());
-                invertedIndex.get(personDetail).add(i);
+                invertedIndex.putIfAbsent(personDetail.toLowerCase(), new ArrayList<>());
+                invertedIndex.get(personDetail.toLowerCase()).add(i);
             }
         }
         scanner = new Scanner(System.in);
