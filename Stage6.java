@@ -45,8 +45,8 @@ class ConcreteImplementation{
         Set<Integer> lineIndex = new HashSet<>();
         boolean firstTimeEntering = true;
         for (String personDetail : toSearch.split(" ")) {
+	    personDetail = personDetail.toLowerCase();
             if (invertedIndex.get(personDetail) == null) continue;
-            personDetail = personDetail.toLowerCase();
             if (firstTimeEntering) {
                 firstTimeEntering = false;
                 lineIndex.addAll(invertedIndex.get(personDetail));
